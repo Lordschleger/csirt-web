@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2022 at 05:22 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- Generation Time: Sep 06, 2024 at 12:20 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webcsirt`
+-- Database: `web_csirt`
 --
 
 -- --------------------------------------------------------
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -53,11 +53,11 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -69,19 +69,11 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `files` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
-(1, 'rfc2350-JatengProv-CSIRT-id.pdf', 'uploads/rfc2350-JatengProv-CSIRT-id.pdf', '2022-02-08 08:16:20', '2022-02-08 08:16:20'),
-(3, 'RFC-2350-Jatim-CSIRTv-1_2.pdf', 'uploads/RFC-2350-Jatim-CSIRTv-1_2.pdf', '2022-02-17 07:35:19', '2022-02-17 07:35:19');
 
 -- --------------------------------------------------------
 
@@ -91,12 +83,12 @@ INSERT INTO `files` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `footers` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telephone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `maps` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `telephone` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `maps` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -106,7 +98,7 @@ CREATE TABLE `footers` (
 --
 
 INSERT INTO `footers` (`id`, `name`, `slug`, `address`, `telephone`, `email`, `maps`, `created_at`, `updated_at`) VALUES
-(2, 'Gov-CSIRT', 'gov-csirt', 'Jl. Harsono RM No.70, Ragunan, Pasar Minggu, Jakarta Selatan Indonesia – 12550', '(021) 78833610987', 'bantuan70@bssn.go.id', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126876.72850031761!2d106.67506405820313!3d-6.407169799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e89508d65a39%3A0xdb839ef71e638af0!2sBadan%20Siber%20Dan%20Sandi%20Negara!5e0!3m2!1sid!2sid!4v1644308724362!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2022-02-08 01:21:42', '2022-02-17 07:33:30');
+(2, 'Lorem Ipsum', 'lorem-ipsum', 'Jl. In Aja, Kampung Baru, Indonesia – 12550', '088811223344', 'bantuan@domain.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237860.5572099315!2d-157.96422204325887!3d21.32795316195581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c00183b8cc3464d%3A0x4b28f55ff3a7976c!2sHonolulu%2C%20HI%2C%20USA!5e0!3m2!1sen!2sid!4v1725259535667!5m2!1sen!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '2022-02-08 01:21:42', '2024-09-01 22:46:03');
 
 -- --------------------------------------------------------
 
@@ -116,11 +108,11 @@ INSERT INTO `footers` (`id`, `name`, `slug`, `address`, `telephone`, `email`, `m
 
 CREATE TABLE `guidances` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -144,10 +136,11 @@ INSERT INTO `guidances` (`id`, `name`, `file_name`, `slug`, `size`, `path`, `cre
 
 CREATE TABLE `image_properties` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `property` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `property` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `file_type` varchar(50) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -156,10 +149,10 @@ CREATE TABLE `image_properties` (
 -- Dumping data for table `image_properties`
 --
 
-INSERT INTO `image_properties` (`id`, `property`, `name`, `slug`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Logo', 'Logo JatimProv-CSIRT', 'logo-jatimprov-csirt', 'image-property/tO48Am4oFQsGaMjaa19v8jGEyd2Y0bbzypALFkcG.png', '2022-02-08 08:10:12', '2022-02-18 17:56:21'),
-(3, 'Banner', 'Banner Home CSIRT', 'banner-home-csirt', 'image-property/gidtvwI16LGewQeozvXGNNTQ0sWm1l42oPj6dwar.jpg', '2022-02-08 08:15:22', '2022-02-19 00:46:53'),
-(9, 'Logo', 'Logo Baru', 'logo-baru', 'image-property/As4vO9sAxmTOCFsJXowDsdg6hL0J7ipc2vqPC328.png', '2022-02-25 09:08:13', '2022-02-25 09:12:30');
+INSERT INTO `image_properties` (`id`, `property`, `name`, `slug`, `image`, `file_type`, `created_at`, `updated_at`) VALUES
+(1, 'Logo', 'Logo JatimProv-CSIRT', 'logo-jatimprov-csirt', 'image-property/8MJyvJbsLHa2snu7xDIYF8QsGOYZd5Oj076uaojh.jpg', 'picture', '2022-02-08 08:10:12', '2024-09-01 22:49:35'),
+(3, 'Banner', 'Banner Home CSIRT', 'banner-home-csirt', 'image-property/mSpKD2DMpABZcDsrivbjCQfT3CY1L2pHIdJCOh5P.mp4', 'video', '2022-02-08 08:15:22', '2024-09-01 23:40:14'),
+(9, 'Logo', 'Logo Baru', 'logo-baru', 'image-property/lU2FoZHwoD9nBYnVprIM2lnInsFJ5QOEgRo6O1GN.jpg', 'picture', '2022-02-25 09:08:13', '2024-09-01 22:48:25');
 
 -- --------------------------------------------------------
 
@@ -169,19 +162,11 @@ INSERT INTO `image_properties` (`id`, `property`, `name`, `slug`, `image`, `crea
 
 CREATE TABLE `keys` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `keys`
---
-
-INSERT INTO `keys` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
-(1, 'Publik-Key-Bantuan70-pub.asc', 'public-key/Publik-Key-Bantuan70-pub.asc', '2022-02-08 08:21:07', '2022-02-08 08:21:07'),
-(3, 'pgcsirt@jogjaprov.go_.id-0xC824AF44-rev.asc', 'public-key/pgcsirt@jogjaprov.go_.id-0xC824AF44-rev.asc', '2022-02-17 07:37:02', '2022-02-17 07:37:02');
 
 -- --------------------------------------------------------
 
@@ -191,7 +176,7 @@ INSERT INTO `keys` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -213,7 +198,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2022_01_28_103447_create_services_table', 1),
 (12, '2022_01_28_155903_create_keys_table', 1),
 (13, '2022_02_01_081246_add_is_superadmin_to_users_table', 1),
-(17, '2022_02_18_125057_create_guidances_table', 2);
+(17, '2022_02_18_125057_create_guidances_table', 2),
+(18, '2024_08_30_165945_add_file_type_to_image_properties', 3);
 
 -- --------------------------------------------------------
 
@@ -222,8 +208,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -235,11 +221,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -255,11 +241,11 @@ CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `excerpt` text NOT NULL,
+  `body` text NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT 0,
   `published_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -285,10 +271,10 @@ INSERT INTO `posts` (`id`, `category_id`, `user_id`, `title`, `slug`, `image`, `
 
 CREATE TABLE `profils` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `link` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -298,8 +284,8 @@ CREATE TABLE `profils` (
 --
 
 INSERT INTO `profils` (`id`, `name`, `slug`, `content`, `link`, `created_at`, `updated_at`) VALUES
-(1, 'Gov-CSIRT', 'gov-csirt', '<div>ini profil gov csirt baru</div>', 'https://osticket.com/', '2022-02-08 07:56:44', '2022-02-08 08:03:50'),
-(3, 'JatimProv-CSIRT', 'jatimprov-csirt', '<div>Ini Profil baru, welcome to Website JatimProv-CSIRT</div>', 'https://bssn.go.id', '2022-02-17 07:34:27', '2022-02-17 07:34:54');
+(1, 'Gov-CSIRT', 'gov-csirt', '<div>&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit&nbsp;</div>', 'https://lorem.com/', '2022-02-08 07:56:44', '2024-09-01 22:51:51'),
+(3, 'Lorem Ipsum', 'lorem-ipsum', '<div>&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit&nbsp;</div>', 'https://Lorem-Ipsum.co', '2022-02-17 07:34:27', '2024-09-01 22:50:21');
 
 -- --------------------------------------------------------
 
@@ -309,9 +295,9 @@ INSERT INTO `profils` (`id`, `name`, `slug`, `content`, `link`, `created_at`, `u
 
 CREATE TABLE `services` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `content` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -321,8 +307,8 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `slug`, `content`, `created_at`, `updated_at`) VALUES
-(2, 'Gov-CSIRT', 'gov-csirt', '<div>ini merupakan layanan dari gov-csirt</div>', '2022-02-08 08:35:16', '2022-02-08 08:35:16'),
-(4, 'JatimProv-CSIRT', 'jatimprov-csirt', '<div>Ini merupakan layanan JatimProv-CSIRT yang telah diedit</div>', '2022-02-17 07:36:18', '2022-02-17 07:36:40');
+(2, 'Gov-CSIRT', 'gov-csirt', '<div>&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit&nbsp;</div>', '2022-02-08 08:35:16', '2024-09-01 22:57:08'),
+(4, 'Lorem-CSIRT', 'lorem-csirt', '<div>&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit&nbsp;</div>', '2022-02-17 07:36:18', '2024-09-01 22:52:17');
 
 -- --------------------------------------------------------
 
@@ -332,13 +318,13 @@ INSERT INTO `services` (`id`, `name`, `slug`, `content`, `created_at`, `updated_
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) NOT NULL,
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `is_superadmin` tinyint(1) NOT NULL DEFAULT 0
@@ -349,7 +335,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`, `is_superadmin`) VALUES
-(1, 'Admin', 'Admin', 'admin@gmail.com', NULL, '$2y$10$CeAMAQeChUytGyOLe.B0GOWmmbYLdnfahkYdQacGTCOzUonPQEB/W', 1, NULL, '2022-02-08 00:53:15', '2022-02-25 07:57:57', 1);
+(1, 'Admin', 'Admin', 'admin@gmail.com', NULL, '$2y$10$3CH7EwPS3NiN3htmC3rdlufCmoU1Ft2QRnJmnu3lWxGmiAf.sJkEy', 1, NULL, '2022-02-08 00:53:15', '2024-09-01 23:39:44', 1);
 
 --
 -- Indexes for dumped tables
@@ -495,7 +481,7 @@ ALTER TABLE `guidances`
 -- AUTO_INCREMENT for table `image_properties`
 --
 ALTER TABLE `image_properties`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `keys`
@@ -507,7 +493,7 @@ ALTER TABLE `keys`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
